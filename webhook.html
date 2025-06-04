@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TechZone Webhook Handler</title>
+</head>
+<body>
+    <script type="module">
+        import config from './config.js';
+
+        // Handle webhook events
+        window.addEventListener('load', async function() {
+            // Parse the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            
+            if (code) {
+                try {
+                    // Exchange code for access token
+                    const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            client_id: config.GITHUB_CLIENT_ID,
+                            code: code,
+                            redirect_uri: config.REDIRECT_URI
+                        })
+                    });
+
+                    const data = await tokenResponse.json();
+                    if (data.access_token) {
+                        // Store the token
+                        sessionStorage.setItem('github_token', data.access_token);
+                        // Store success flag
+                        sessionStorage.setItem('github_auth_success', 'true');
+                    }
+                } catch (error) {
+                    console.error('Error exchanging code for token:', error);
+                }
+
+                // Redirect back to main page
+                window.location.href = '/';
+            }
+        });
+    </script>
+    <div style="text-align: center; padding: 20px;">
+        Processing GitHub authentication...
+    </div>
+</body>
+</html> 
