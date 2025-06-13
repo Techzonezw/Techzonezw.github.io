@@ -3,460 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechZone</title>
+    <meta name="description" content="TechZone - Professional Web Design, Hosting, and Domain Registration Services">
+    <meta name="keywords" content="web design, web hosting, domain registration, responsive design, professional websites">
+    <meta name="author" content="TechZone">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="TechZone - Professional Web Services">
+    <meta property="og:description" content="Professional web design, hosting, and domain registration services">
+    <meta property="og:type" content="website">
+    <title>TechZone - Professional Web Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --background-color: #f8fafc;
-            --text-color: #1e293b;
-            --card-bg: #ffffff;
-            --header-height: 80px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            padding: 0.5rem 0;
-            background: rgba(37, 99, 235, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        nav a {
-            margin: 0 1.5rem;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 8rem 2rem 6rem;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        section {
-            margin: 4rem 0;
-            padding-top: var(--header-height);
-            margin-top: calc(-1 * var(--header-height));
-        }
-
-        section h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .services, .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 1rem;
-        }
-
-        .service, .testimonial {
-            background: var(--card-bg);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .service {
-            text-align: center;
-        }
-
-        .service i {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .service:hover, .testimonial:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonial {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .testimonial:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 1rem;
-            border: 3px solid var(--primary-color);
-        }
-
-        .author-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .author-name {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .author-title {
-            color: #666;
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        .contact-form {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form input, 
-        .contact-form textarea {
-            width: 100%;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .contact-form input:focus, 
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .contact-form button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        .contact-form button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .success-message {
-            color: #059669;
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            background-color: #ecfdf5;
-            display: none;
-        }
-
-        footer {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 6rem 1rem 4rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            nav {
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                margin: 0.5rem 1rem;
-            }
-
-            .services, .testimonials {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .service, .testimonial {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .service:nth-child(2) { animation-delay: 0.2s; }
-        .service:nth-child(3) { animation-delay: 0.4s; }
-        .service:nth-child(4) { animation-delay: 0.6s; }
-        .service:nth-child(5) { animation-delay: 0.8s; }
-
-        .comments-section {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .comment {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .comment-author {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .comment-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .comment-content {
-            line-height: 1.6;
-        }
-
-        .comment-form {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .comment-form h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .comment-form input,
-        .comment-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .comment-form textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .comment-form button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s ease;
-        }
-
-        .comment-form button:hover {
-            background: var(--secondary-color);
-        }
-
-        .github-login-btn {
-            background: #24292e;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            margin: 1rem 0;
-            transition: background-color 0.3s ease;
-        }
-
-        .github-login-btn:hover {
-            background: #2c3238;
-        }
-
-        .github-login-btn i {
-            font-size: 1.2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>Welcome to TechZone</h1>
-    <nav>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#about" class="nav-link">About Us</a>
-        <a href="#testimonials" class="nav-link">Testimonials</a>
-        <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-</header>
+  <header>
+     <div style="text-align: center;">
+         <h1 style="margin: 0; padding: 1rem 0;">Welcome to TechZonn</h1>
+     </div>
+      <nav>
+         <a href="#services" class="nav-link">Services</a>
+         <a href="#about" class="nav-link">About Us</a>
+         <a href="#testimonials" class="nav-link">Testimonials</a>
+         <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+  </header>
 
 <div class="hero">
-    <h1>Your Partner in IT Solutions</h1>
-    <p>Empowering businesses through innovative technology.</p>
-    <div style="margin-top: 2rem;">
-        <a href="#contact" class="nav-link" style="
-            background: white;
-            color: var(--primary-color);
-            padding: 0.8rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        ">Get Started</a>
+    <div class="hero-content">
+        <h1>Your Partner in IT Solutions</h1>
+        <p>Empowering businesses through innovative technology.</p>
+        <a href="#contact" class="get-started-btn">Get Started</a>
     </div>
 </div>
 
 <div class="container">
-    <section id="services">
-        <h2>Our Services</h2>
+    <section id="services" class="services-section">
+        <h2 class="section-title">Our Services</h2>
         <div class="services">
             <div class="service">
-                <i class="fas fa-code"></i>
-                <h3>Web Creation</h3>
-                <p>We build stunning websites tailored to your needs.</p>
+                <i class="fas fa-palette"></i>
+                <h3>Web Designing</h3>
+                <p>We create stunning, modern, and responsive website designs tailored to your brand.</p>
             </div>
             <div class="service">
                 <i class="fas fa-server"></i>
-                <h3>Hosting</h3>
-                <p>Reliable and secure web hosting solutions for everyone.</p>
+                <h3>Web Hosting & Domain Registration</h3>
+                <p>Reliable web hosting solutions and domain name registration services.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-search"></i>
+                <h3>SEO Optimization</h3>
+                <p>We optimize your websites with proven SEO strategies to improve rankings, increase organic traffic, and enhance online visibility. Our comprehensive SEO services include keyword research, content optimization, and technical SEO improvements.</p>
             </div>
             <div class="service">
                 <i class="fas fa-cogs"></i>
@@ -480,7 +77,7 @@
         <h2>What Our Clients Say</h2>
         <div class="testimonials">
             <div class="testimonial">
-                <p>"TechZone has revolutionized our digital presence. Their web development expertise and attention to detail have helped us reach a wider audience. The team's dedication to excellence is truly remarkable!"</p>
+                <p>"TechZonn has revolutionized our digital presence. Their web development expertise and attention to detail have helped us reach a wider audience. The team's dedication to excellence is truly remarkable!"</p>
                 <div class="testimonial-author">
                     <img src="https://ui-avatars.com/api/?name=Tatenda+Steves&background=0D8ABC&color=fff" alt="Tatenda Steves" class="author-avatar">
                     <div class="author-info">
@@ -490,7 +87,7 @@
                 </div>
             </div>
             <div class="testimonial">
-                <p>"Working with TechZone has been a game-changer for our organization. Their hosting solutions are reliable, and their technical support is always responsive and professional. Highly recommended!"</p>
+                <p>"Working with TechZonn has been a game-changer for our organization. Their hosting solutions are reliable, and their technical support is always responsive and professional. Highly recommended!"</p>
                 <div class="testimonial-author">
                     <img src="https://ui-avatars.com/api/?name=Mr+Mtombwa&background=2563EB&color=fff" alt="Mr Mtombwa" class="author-avatar">
                     <div class="author-info">
@@ -500,7 +97,7 @@
                 </div>
             </div>
             <div class="testimonial">
-                <p>"The team at TechZone truly understands modern web solutions. They've helped us implement cutting-edge technologies while maintaining user-friendly interfaces. Their work has significantly improved our online operations."</p>
+                <p>"The team at TechZonn truly understands modern web solutions. They've helped us implement cutting-edge technologies while maintaining user-friendly interfaces. Their work has significantly improved our online operations."</p>
                 <div class="testimonial-author">
                     <img src="https://ui-avatars.com/api/?name=Sarah+Matipa&background=7C3AED&color=fff" alt="Sarah Matipa" class="author-avatar">
                     <div class="author-info">
@@ -535,7 +132,7 @@
 
     <section id="about">
         <h2>About Us</h2>
-        <p>TechZone specializes in providing top-notch IT solutions. Our mission is to empower businesses through technology.</p>
+        <p>TechZonn specializes in providing top-notch IT solutions. Our mission is to empower businesses through technology.</p>
     </section>
 
     <section id="contact">
@@ -553,119 +150,10 @@
 </div>
 
 <footer>
-    <p>&copy; 2025 TechZone. All Rights Reserved.</p>
+    <p>&copy; 2025 TechZonn. All Rights Reserved.</p>
 </footer>
 
-<script type="module">
-    import config from './config.js';
-
-    // GitHub repository details
-    const GITHUB_REPO = config.GITHUB_REPO;
-    const GITHUB_CLIENT_ID = config.GITHUB_CLIENT_ID;
-    
-    // Check for GitHub authentication code
-    window.addEventListener('load', function() {
-        const code = sessionStorage.getItem('github_code');
-        if (code) {
-            // Clear the code from session storage
-            sessionStorage.removeItem('github_code');
-            // Show the comment form and hide login button
-            document.getElementById('comment-form').style.display = 'block';
-            document.getElementById('github-login').style.display = 'none';
-            console.log('Authenticated with GitHub');
-        }
-    });
-
-    // Function to handle GitHub login
-    function handleGitHubLogin() {
-        const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(config.REDIRECT_URI)}&scope=public_repo`;
-        window.location.href = authUrl;
-    }
-
-    // Add login button event listener
-    document.getElementById('github-login').addEventListener('click', handleGitHubLogin);
-
-    // Function to format date
-    function formatDate(dateString) {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return new Date(dateString).toLocaleDateString(undefined, options);
-    }
-
-    // Function to load comments
-    async function loadComments() {
-        try {
-            const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/issues?labels=comment`);
-            const issues = await response.json();
-            
-            const commentsContainer = document.getElementById('comments-list');
-            commentsContainer.innerHTML = '';
-
-            issues.forEach(issue => {
-                const commentElement = document.createElement('div');
-                commentElement.className = 'comment';
-                commentElement.innerHTML = `
-                    <div class="comment-header">
-                        <span class="comment-author">${issue.user.login}</span>
-                        <span class="comment-date">${formatDate(issue.created_at)}</span>
-                    </div>
-                    <div class="comment-content">
-                        ${issue.body}
-                    </div>
-                `;
-                commentsContainer.appendChild(commentElement);
-            });
-        } catch (error) {
-            console.error('Error loading comments:', error);
-        }
-    }
-
-    // Function to post a new comment
-    async function postComment(comment) {
-        try {
-            const token = sessionStorage.getItem('github_token');
-            const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/issues`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `token ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    title: 'New Comment',
-                    body: comment,
-                    labels: ['comment']
-                })
-            });
-
-            if (response.ok) {
-                loadComments();
-                return true;
-            }
-            return false;
-        } catch (error) {
-            console.error('Error posting comment:', error);
-            return false;
-        }
-    }
-
-    // Handle comment form submission
-    document.getElementById('comment-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const commentInput = document.getElementById('comment-text');
-        
-        const success = await postComment(commentInput.value);
-        
-        if (success) {
-            commentInput.value = '';
-            alert('Comment posted successfully!');
-        } else {
-            alert('Error posting comment. Please try again.');
-        }
-    });
-
-    // Load comments when the page loads
-    loadComments();
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
