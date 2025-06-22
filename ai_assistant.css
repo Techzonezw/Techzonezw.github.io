@@ -1,0 +1,211 @@
+/* ai_assistant.css */
+
+/* Corrected .ai-box for proper animation */
+.ai-box {
+  position: fixed;
+  bottom: 20px; /* Adjusted to sit slightly above the bottom */
+  right: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  width: 350px;
+  max-height: 500px;
+  border-radius: 10px;
+  z-index: 9999; /* Ensure it's on top */
+
+  /* --- Key changes for animation --- */
+  opacity: 0; /* Start completely transparent */
+  transform: translateX(100%); /* Start off-screen to the right */
+  visibility: hidden; /* Hide it from screen readers/interactions when not shown */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0.5s;
+  /* Use flex for internal layout (buttons, input, messages) */
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-box.show {
+  opacity: 1; /* Fade in */
+  transform: translateX(0); /* Slide into view */
+  visibility: visible; /* Make it visible for screen readers/interactions */
+}
+
+/* Header within AI Box */
+.ai-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px; /* Add some padding below header */
+  border-bottom: 1px solid #eee; /* Separator */
+}
+
+.ai-box-header h3 {
+    margin: 0; /* Remove default margin */
+    color: #333;
+}
+
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.8rem; /* Slightly larger for easier tap */
+  color: #888;
+  transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+  color: #555;
+}
+
+#ai-input {
+  width: calc(100% - 30px); /* Adjust width for padding */
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  flex-shrink: 0; /* Prevent input from shrinking in flex container */
+}
+
+#voice-btn, #submit-btn {
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+#voice-btn {
+  background-color: #4CAF50;
+  margin-bottom: 10px; /* Space between buttons */
+}
+
+#voice-btn:hover {
+  background-color: #3e8e41;
+}
+
+#submit-btn {
+  background-color: #3498db;
+  /* margin-top: 10px; - Removed as voice-btn now has margin-bottom */
+}
+
+#submit-btn:hover {
+  background-color: #2c97db; /* Adjusted hover color to be distinct from green */
+}
+
+/* AI messages container - crucial for scrollable chat */
+#ai-messages {
+  flex-grow: 1; /* Allows it to take available space */
+  padding: 10px;
+  overflow-y: auto; /* Enables scrolling */
+  /* max-height: 200px; - Removed, flex-grow will manage height */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex; /* Make messages flexible inside */
+  flex-direction: column;
+}
+
+.ai-message {
+  margin-bottom: 8px; /* Slightly less margin for tighter chat */
+  padding: 10px 12px;
+  border-radius: 15px; /* Rounded corners for chat bubbles */
+  max-width: 80%; /* Don't let messages stretch too wide */
+  word-wrap: break-word; /* Ensure long words break */
+}
+
+.ai-message strong {
+  font-weight: bold;
+}
+
+/* Specific styles for user and AI messages */
+.user-message {
+  background-color: #e0f7fa; /* Light blue for user */
+  align-self: flex-end; /* Align user messages to the right */
+  text-align: right;
+}
+
+.ai-message:not(.user-message) { /* For TechZonn's messages */
+  background-color: #e8f5e9; /* Light green for AI */
+  align-self: flex-start; /* Align AI messages to the left */
+  text-align: left;
+}
+
+
+/* --- Keyframes (adjusted for right-to-left slide in) --- */
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%); /* Start completely off-screen to the right */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* End at its normal position */
+    opacity: 1;
+  }
+}
+
+/* --- Positioning for the AI Icon --- */
+.techzone-container {
+  /* This is your #ai-icon element in JS */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's above normal content but below the open AI box */
+  display: flex; /* Use flex to align icon and text */
+  flex-direction: column;
+  align-items: center;
+  gap: 5px; /* Space between icon and text */
+}
+
+.techzone-icon {
+  width: 80px;
+  height: 80px;
+  background-image: url('images/techzone.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 3px solid #007bff; /* Add a subtle border */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  /* Removed absolute positioning, container will handle fixed positioning */
+  /* top: 40px; right: 10px; z-index: 1000; - REMOVED */
+}
+
+.techzone-container span {
+  font-size: 1em; /* Adjusted font size, 20px might be too big for a small icon text */
+  font-weight: bold;
+  text-decoration: underline;
+  color: #642a2a; /* Make text color readable */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .ai-box {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        bottom: 5%;
+        max-height: 70%;
+        top: auto; /* Ensure it's not fixed from top for smaller screens if needed */
+        transform: translateY(100%); /* Adjust slide-in direction for mobile bottom placement */
+    }
+
+    .ai-box.show {
+        transform: translateY(0);
+    }
+
+    .techzone-container {
+        top: 10px; /* Adjust icon position for mobile */
+        right: 10px;
+    }
+}

@@ -138,3 +138,13 @@ if (form) {
         });
     });
 } 
+document.getElementById('close-btn').addEventListener('click', function() {
+  document.getElementById('ai-box').style.display = 'none';
+});
+
+document.getElementById('submit-btn').addEventListener('click', function() {
+  // Handle submit button click event
+  var input = document.getElementById('ai-input').value;
+  // Process the input
+})
+  
